@@ -6,4 +6,4 @@ var BASE_URL = "https://api.github.com/"
 //Old
 var APIKEY = "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"
 //status loading
-enum class ApiStatus { EMPTY, EMPTY_BEFORE, EMPTY_AFTER, LOADING, LOADED, SUCCESS, FAILED }
+enum class ApiStatus { EMPTY, EMPTY_BEFORE, EMPTY_AFTER, LOADING, LOADED, SUCCESS, FAILED ,FAILED_API}

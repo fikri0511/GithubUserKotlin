@@ -16,7 +16,10 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.miguelcatalan.materialsearchview.MaterialSearchView
 import kotlinx.android.synthetic.main.component_toolbar.*
+import kotlinx.android.synthetic.main.empty_view.*
+import kotlinx.android.synthetic.main.empty_view.view.*
 import kotlinx.android.synthetic.main.item_bottomsheet_detail_user.*
+import kotlinx.android.synthetic.main.item_bottomsheet_detail_user.view.*
 import kotlinx.android.synthetic.main.item_list_users.view.*
 import org.sonicboom.githubapplication.R
 import org.sonicboom.githubapplication.constant.ApiStatus
@@ -225,30 +228,38 @@ class MainActivity : AppCompatActivity() {
                 ApiStatus.SUCCESS -> {
                     progressBarDetail.visibility = View.GONE
                     layoutNama.visibility = View.VISIBLE
-
+                    emptyViewDetail.visibility = View.GONE
+                    layoutFollowers.visibility = View.VISIBLE
+                    btWeb.visibility = View.VISIBLE
+                    tvBio.visibility = View.VISIBLE
+                    tvIsiBio.visibility = View.VISIBLE
                 }
                 ApiStatus.FAILED -> {
-                    Toast.makeText(
-                        this,
-                        "Jaringan Bermasalah atau Request Limit",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    progressBarDetail.visibility = View.GONE
+                    errorHandlingApi()
                 }
                 ApiStatus.LOADING -> {
                     progressBarDetail.visibility = View.VISIBLE
                     layoutNama.visibility = View.GONE
                 }
                 else -> {
-                    Toast.makeText(
-                        this,
-                        "Jaringan Bermasalah atau Request Limit",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    progressBarDetail.visibility = View.GONE
+                    errorHandlingApi()
                 }
 
             }
         })
+    }
+
+    private fun errorHandlingApi() {
+        emptyViewDetail.visibility = View.VISIBLE
+        layoutNama.visibility = View.GONE
+        layoutFollowers.visibility = View.GONE
+        btWeb.visibility = View.GONE
+        tvBio.visibility = View.GONE
+        tvIsiBio.visibility = View.GONE
+        emptyViewDetail.tvEmptyViewDetail.text = "Jaringan Bermasalah atau Anda Terkena Limit Github API"
+        emptyViewDetail.lottieDetail.visibility = View.VISIBLE
+        progressBarDetail.visibility = View.GONE
+
+
     }
 }

@@ -13,18 +13,29 @@ import org.sonicboom.githubapplication.constant.ApiStatus
 
 
 @SuppressLint("SetTextI18n")
-fun stateUtilWithEmptyView(context: Context, apiStatus: ApiStatus, progressBar: ProgressBar, recyclerView: RecyclerView, tvEmptyView: TextView, imEmptyView: ImageView, layoutEmptyView: View, textEmptyView:String, imageEmpty:Int, lottie:View ) {
+fun stateUtilWithEmptyView(
+    context: Context,
+    apiStatus: ApiStatus,
+    progressBar: ProgressBar,
+    recyclerView: RecyclerView,
+    tvEmptyView: TextView,
+    imEmptyView: ImageView,
+    layoutEmptyView: View,
+    textEmptyView: String,
+    imageEmpty: Int,
+    lottie: View
+) {
     Log.d("STATUS_HISTORY", apiStatus.toString())
     when (apiStatus) {
         ApiStatus.SUCCESS -> {
             progressBar.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
-            lottie.visibility= View.GONE
+            lottie.visibility = View.GONE
 
         }
         ApiStatus.LOADING -> {
             progressBar.visibility = View.VISIBLE
-            lottie.visibility= View.GONE
+            lottie.visibility = View.GONE
 
         }
         ApiStatus.EMPTY -> {
@@ -33,35 +44,43 @@ fun stateUtilWithEmptyView(context: Context, apiStatus: ApiStatus, progressBar: 
             layoutEmptyView.visibility = View.VISIBLE
             recyclerView.visibility = View.GONE
             progressBar.visibility = View.GONE
-            lottie.visibility= View.GONE
+            lottie.visibility = View.GONE
 
         }
         ApiStatus.EMPTY_BEFORE -> {
             progressBar.visibility = View.GONE
-            lottie.visibility= View.GONE
+            lottie.visibility = View.GONE
 
         }
         ApiStatus.EMPTY_AFTER -> {
             progressBar.visibility = View.GONE
-            lottie.visibility= View.GONE
+            lottie.visibility = View.GONE
 
         }
         ApiStatus.LOADED -> {
             layoutEmptyView.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
             progressBar.visibility = View.GONE
-            lottie.visibility= View.GONE
+            lottie.visibility = View.GONE
 
         }
         ApiStatus.FAILED -> {
             progressBar.visibility = View.GONE
-            Toast.makeText(context, "Jaringan bermasalah", Toast.LENGTH_SHORT)
-                .show()
             layoutEmptyView.visibility = View.VISIBLE
-            tvEmptyView.text = "Jaringan Bermasalah"
+            recyclerView.visibility = View.GONE
+            tvEmptyView.text = "Jaringan Bermasalah atau Anda Terkena Limit Github API"
             imEmptyView.setImageResource(imageEmpty)
             imEmptyView.visibility = View.GONE
-            lottie.visibility= View.VISIBLE
+            lottie.visibility = View.VISIBLE
+        }
+        ApiStatus.FAILED_API -> {
+            progressBar.visibility = View.GONE
+            layoutEmptyView.visibility = View.VISIBLE
+            recyclerView.visibility = View.GONE
+            tvEmptyView.text = "Anda Terkena Limit Github API"
+            imEmptyView.setImageResource(imageEmpty)
+            imEmptyView.visibility = View.GONE
+            lottie.visibility = View.VISIBLE
         }
     }
 }

@@ -40,10 +40,14 @@ class MainActivityDataSource(coroutineContext: CoroutineContext, private val que
                             callback.onResult(responseItem, null, FIRST_PAGE + 1)
                         }
                     }
+                    else -> {
+                        apiState.postValue(ApiStatus.FAILED)
+                    }
                 }
             } catch (e: Exception) {
                 apiState.postValue(ApiStatus.FAILED)
-                Log.d(TAG, e.localizedMessage!!)
+//                Log.d(TAG, e.localizedMessage!!)
+
             }
 
         }
@@ -71,7 +75,7 @@ class MainActivityDataSource(coroutineContext: CoroutineContext, private val que
                 }
             } catch (e: Exception) {
                 apiState.postValue(ApiStatus.FAILED)
-                Log.d(TAG, e.localizedMessage!!)
+//                Log.d(TAG, e.localizedMessage!!)
             }
 
         }
@@ -101,15 +105,15 @@ class MainActivityDataSource(coroutineContext: CoroutineContext, private val que
                                 }
                             }
                             else -> {
-                                apiState.postValue(ApiStatus.FAILED)
+                                apiState.postValue(ApiStatus.FAILED_API)
                             }
                         }
                     }
                 }
 
             } catch (e: Exception) {
-                apiState.postValue(ApiStatus.FAILED)
-                Log.d("ERR_REQ_PRMNTAAN_WD", e.localizedMessage!!)
+                apiState.postValue(ApiStatus.FAILED_API)
+//                Log.d("ERR_REQ_PRMNTAAN_WD", e.localizedMessage!!)
             }
         }
     }

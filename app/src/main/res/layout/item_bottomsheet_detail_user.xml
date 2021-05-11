@@ -189,4 +189,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
+
+    <LinearLayout
+        android:id="@+id/emptyViewDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_centerInParent="true">
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieDetail"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="no_internet.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:textAlignment="center"
+            android:id="@+id/tvEmptyViewDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_tidak_ditemukan"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
 </RelativeLayout>
