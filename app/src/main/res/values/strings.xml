@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">GithubApplication</string>
+    <string name="back_arrow">Back Arrow</string>
+    <string name="empty_view">Empty View</string>
+    <string name="user_tidak_ditemukan">User Tidak Ditemukan</string>
+    <string name="repository">Repository</string>
+    <string name="following">Following</string>
+    <string name="_158">158</string>
+    <string name="followers">Followers</string>
+    <string name="bio">Bio :</string>
+    <string name="cek_website">Cek Website</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="github_user_app">Github User APP</string>
 </resources>
